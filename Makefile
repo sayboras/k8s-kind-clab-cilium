@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 KIND_NETWORK?=172.100.0.0/16
 CLUSTER_NAME?=bazzinga
-CILIUM_VERSION=v1.13.0
+CILIUM_VERSION=v1.16.5
 export CLUSTER_NAME:=$(CLUSTER_NAME)
 
 create_kind_network:
