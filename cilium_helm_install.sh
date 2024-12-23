@@ -1,4 +1,5 @@
 #!/bin/sh
+# shellcheck disable=SC3033
 cilium-helm-install(){
     (
         set -e
@@ -16,13 +17,13 @@ cilium-helm-install(){
           --version $ciliumVersion \
           --helm-set debug.enabled=true \
           --helm-set debug.verbose=datapath \
-          --helm-set ipam.mode=cluster-pool-v2beta \
+          --helm-set ipam.mode=cluster-pool \
           --helm-set ipam.operator.clusterPoolIPv4PodCIDRList\[0\]="10.51.0.0/17" \
-          --helm-set tunnel=disabled \
+          --helm-set routingMode=native \
           --helm-set ipv4NativeRoutingCIDR="10.51.0.0/17" \
           --helm-set bgpControlPlane.enabled=true \
           --helm-set gatewayAPI.enabled=true \
-          --helm-set kubeProxyReplacement="strict" \
+          --helm-set kubeProxyReplacement=true \
           --helm-set k8sServiceHost=$clusterName-control-plane \
           --helm-set k8sServicePort="6443" \
           --helm-set bpf.masquerade=true \
